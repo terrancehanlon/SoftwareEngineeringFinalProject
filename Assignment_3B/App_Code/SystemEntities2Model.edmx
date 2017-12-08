@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SystemModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TableForAppointments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="patientID" Type="int" />
+          <Property Name="doctorID" Type="int" />
+          <Property Name="time" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TableForDepartment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DepartmentNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="TableForDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="docName" Type="varchar" MaxLength="50" />
+          <Property Name="departmentID" Type="int" />
+        </EntityType>
+        <EntityType Name="TableForEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="To" Type="varchar" MaxLength="50" />
+          <Property Name="From" Type="varchar" MaxLength="50" />
+          <Property Name="text" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TableForHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TableForPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PatientName" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="SystemModel2StoreContainer">
+          <EntitySet Name="TableForAppointments" EntityType="Self.TableForAppointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableForDepartment" EntityType="Self.TableForDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableForDoctor" EntityType="Self.TableForDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableForEmail" EntityType="Self.TableForEmail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableForHospital" EntityType="Self.TableForHospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableForPatient" EntityType="Self.TableForPatient" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SystemModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TableForAppointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="patientID" Type="Int32" />
+          <Property Name="doctorID" Type="Int32" />
+          <Property Name="time" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TableForDepartment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TableForDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="docName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departmentID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TableForEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="From" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TableForHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TableForPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PatientName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SystemEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TableForAppointments" EntityType="Self.TableForAppointment" />
+          <EntitySet Name="TableForDepartments" EntityType="Self.TableForDepartment" />
+          <EntitySet Name="TableForDoctors" EntityType="Self.TableForDoctor" />
+          <EntitySet Name="TableForEmails" EntityType="Self.TableForEmail" />
+          <EntitySet Name="TableForHospitals" EntityType="Self.TableForHospital" />
+          <EntitySet Name="TableForPatients" EntityType="Self.TableForPatient" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SystemModel2StoreContainer" CdmEntityContainer="SystemEntities2">
+          <EntitySetMapping Name="TableForAppointments">
+            <EntityTypeMapping TypeName="SystemModel2.TableForAppointment">
+              <MappingFragment StoreEntitySet="TableForAppointments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="patientID" ColumnName="patientID" />
+                <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableForDepartments">
+            <EntityTypeMapping TypeName="SystemModel2.TableForDepartment">
+              <MappingFragment StoreEntitySet="TableForDepartment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentNumber" ColumnName="DepartmentNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableForDoctors">
+            <EntityTypeMapping TypeName="SystemModel2.TableForDoctor">
+              <MappingFragment StoreEntitySet="TableForDoctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="docName" ColumnName="docName" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableForEmails">
+            <EntityTypeMapping TypeName="SystemModel2.TableForEmail">
+              <MappingFragment StoreEntitySet="TableForEmail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableForHospitals">
+            <EntityTypeMapping TypeName="SystemModel2.TableForHospital">
+              <MappingFragment StoreEntitySet="TableForHospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableForPatients">
+            <EntityTypeMapping TypeName="SystemModel2.TableForPatient">
+              <MappingFragment StoreEntitySet="TableForPatient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
